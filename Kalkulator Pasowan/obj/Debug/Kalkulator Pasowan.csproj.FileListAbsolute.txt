@@ -1,0 +1,11 @@
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\bin\Debug\Kalkulator Pasowan.exe.config
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\bin\Debug\Kalkulator Pasowan.exe
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\bin\Debug\Kalkulator Pasowan.pdb
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator_Pasowan.MainForm.resources
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator_Pasowan.Properties.Resources.resources
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator Pasowan.csproj.GenerateResource.cache
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator Pasowan.csproj.CoreCompileInputs.cache
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator Pasowan.exe
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator Pasowan.pdb
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator_Pasowan.GroupBoxNew.resources
+K:\Desktop\Kalkulator Pasowania\Kalkulator Pasowan\Kalkulator Pasowan\obj\Debug\Kalkulator Pasowan.csprojAssemblyReference.cache

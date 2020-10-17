@@ -15,6 +15,57 @@ namespace Kalkulator_Pasowan
         public MainForm()
         {
             InitializeComponent();
+            //groupBoxRoll.
+        }
+
+        private void labelRollerClass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxRollerTolerance_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxRollDiameter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxRollerClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxRoll_Enter(object sender, EventArgs e)
+        {
+           //groupBoxRoll.c
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //Kalkulator_Pasowan.GroupBoxNew groupBoxNew;
+        }
+
+        private void groupBoxNew1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxNewRoller_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxNew1_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
