@@ -12,10 +12,20 @@ namespace Kalkulator_Pasowan
 {
     public partial class MainForm : Form
     {
+        ToleratedSize rollerToleratedSize = new ToleratedSize();
+        ToleratedSize holeToleratedSize = new ToleratedSize();
+
         public MainForm()
         {
             InitializeComponent();
-            //groupBoxRoll.
+            textBoxRollDiameter.Text = "10";
+            comboBoxRollerClass.Text = "7";
+            comboBoxRollerTolerance.Text = "h";
+            textBoxHoleDiameter.Text = "10";
+            comboBoxHoleClass.Text = "7";
+            comboBoxHoleTolerance.Text = "H";
+
+
         }
 
         private void labelRollerClass_Click(object sender, EventArgs e)
@@ -30,6 +40,15 @@ namespace Kalkulator_Pasowan
 
         private void textBoxRollDiameter_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                rollerToleratedSize.ChangeDimmension(Convert.ToDouble(textBoxRollDiameter.Text));
+                labelRollerDimmension.Text = Convert.ToString(rollerToleratedSize.GetNominalDimension());
+            }
+            catch
+            {
+
+            }
 
         }
 
@@ -96,6 +115,19 @@ namespace Kalkulator_Pasowan
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxHoleDiameter_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                holeToleratedSize.ChangeDimmension(Convert.ToDouble(textBoxHoleDiameter.Text));
+                labelHoleDimmension.Text = Convert.ToString(holeToleratedSize.GetNominalDimension());
+            }
+            catch
+            {
+
+            }
         }
     }
 }

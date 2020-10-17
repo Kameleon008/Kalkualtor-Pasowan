@@ -18,5 +18,7 @@ namespace Kalkulator_Pasowan
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+
+
     }
 }
