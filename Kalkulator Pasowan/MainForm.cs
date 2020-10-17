@@ -67,5 +67,35 @@ namespace Kalkulator_Pasowan
         {
 
         }
+
+        private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
