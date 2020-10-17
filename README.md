@@ -1,4 +1,4 @@
-# Kalkualtor-Pasowan
+# Kalkualtor Pasowań
 
 
 PL:
