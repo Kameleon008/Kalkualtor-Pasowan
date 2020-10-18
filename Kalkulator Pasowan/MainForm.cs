@@ -14,6 +14,7 @@ namespace Kalkulator_Pasowan
     {
         ToleratedSize rollerToleratedSize = new ToleratedSize();
         ToleratedSize holeToleratedSize = new ToleratedSize();
+        TableToleranceReader TableToleranceReader = new TableToleranceReader();
 
         public MainForm()
         {
@@ -35,7 +36,28 @@ namespace Kalkulator_Pasowan
 
         private void comboBoxRollerTolerance_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                int previousSelectedValue = Convert.ToInt16(comboBoxRollerClass.Text);
+                comboBoxRollerClass.Items.Clear();
+                comboBoxRollerClass.Items.AddRange(TableToleranceReader.ReadAvalibleITClasses(comboBoxRollerTolerance.Text));
+                if (comboBoxRollerClass.Items.IndexOf(Convert.ToString(previousSelectedValue)) == -1)
+                {
+                    comboBoxRollerClass.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboBoxRollerClass.SelectedIndex = comboBoxRollerClass.Items.IndexOf(Convert.ToString(previousSelectedValue));
+                }
+                labelRollerUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
+                labelRollerLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
+                labelRollerDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
+            }
+            catch
+            {
 
+            }
+            
         }
 
         private void textBoxRollDiameter_TextChanged(object sender, EventArgs e)
@@ -44,6 +66,9 @@ namespace Kalkulator_Pasowan
             {
                 rollerToleratedSize.ChangeDimmension(Convert.ToDouble(textBoxRollDiameter.Text));
                 labelRollerDimmension.Text = Convert.ToString(rollerToleratedSize.GetNominalDimension());
+                labelRollerUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelRollerDimmension.Text,comboBoxRollerClass.SelectedIndex);
+                labelRollerLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelRollerDimmension.Text,comboBoxRollerClass.SelectedIndex);
+                labelRollerDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
             }
             catch
             {
@@ -54,7 +79,9 @@ namespace Kalkulator_Pasowan
 
         private void comboBoxRollerClass_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            labelRollerUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
+            labelRollerLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
+            labelRollerDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
         }
 
         private void groupBoxRoll_Enter(object sender, EventArgs e)
@@ -128,6 +155,11 @@ namespace Kalkulator_Pasowan
             {
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
