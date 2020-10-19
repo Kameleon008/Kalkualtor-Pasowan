@@ -150,6 +150,9 @@ namespace Kalkulator_Pasowan
             {
                 holeToleratedSize.ChangeDimmension(Convert.ToDouble(textBoxHoleDiameter.Text));
                 labelHoleDimmension.Text = Convert.ToString(holeToleratedSize.GetNominalDimension());
+                labelHoleUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+                labelHoleLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+                labelHoleDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
             }
             catch
             {
@@ -160,6 +163,38 @@ namespace Kalkulator_Pasowan
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxHoleTolerance_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int previousSelectedValue = Convert.ToInt16(comboBoxHoleClass.Text);
+                comboBoxHoleClass.Items.Clear();
+                comboBoxHoleClass.Items.AddRange(TableToleranceReader.ReadAvalibleITClasses(comboBoxHoleTolerance.Text));
+                if (comboBoxHoleClass.Items.IndexOf(Convert.ToString(previousSelectedValue)) == -1)
+                {
+                    comboBoxHoleClass.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboBoxHoleClass.SelectedIndex = comboBoxHoleClass.Items.IndexOf(Convert.ToString(previousSelectedValue));
+                }
+                labelHoleUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+                labelHoleLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+                labelHoleDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBoxHoleClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            labelHoleUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+            labelHoleLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+            labelHoleDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
         }
     }
 }

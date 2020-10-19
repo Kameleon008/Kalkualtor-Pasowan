@@ -18,8 +18,16 @@ namespace Kalkulator_Pasowan
         {
             try
             {
+                string FilePath = "";
                 char[] separators = new char[] { ';' };
-                string FilePath = @"Data\" + positionOfTolerance + ".csv";
+                if (isAnyUpperCase(positionOfTolerance) == true)
+                {
+                    FilePath = @"Data\hole\" + positionOfTolerance + ".csv";
+                }
+                else if (isAnyUpperCase(positionOfTolerance) == false)
+                {
+                    FilePath = @"Data\shaft\" + positionOfTolerance + ".csv";
+                }
                 readedDataTolerances = new List<string>(System.IO.File.ReadLines(FilePath));
                 string avaibleITClassesStr = readedDataTolerances[0];
                 string[] avaibleITClasses = avaibleITClassesStr.Split(separators);
@@ -87,6 +95,24 @@ namespace Kalkulator_Pasowan
                 return false;
             }
             
+        }
+        private bool isAnyUpperCase(string str)
+        {
+            try
+            {
+                foreach(char ch in str)
+                {
+                    if(ch >= 65 && ch<=90)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
         private double countDeviation(string dim, string dev)
         {
