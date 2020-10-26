@@ -44,6 +44,8 @@
             this.comboBoxHoleClass = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxHole = new System.Windows.Forms.PictureBox();
             this.pictureBoxShaft = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -61,15 +63,13 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.językToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.motywToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHole)).BeginInit();
@@ -81,8 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxRollerTolerance
@@ -333,6 +333,7 @@
             this.comboBoxHoleClass.Name = "comboBoxHoleClass";
             this.comboBoxHoleClass.Size = new System.Drawing.Size(82, 28);
             this.comboBoxHoleClass.TabIndex = 11;
+            this.comboBoxHoleClass.SelectedIndexChanged += new System.EventHandler(this.comboBoxHoleClass_SelectedIndexChanged_1);
             // 
             // tabControl1
             // 
@@ -388,6 +389,30 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tolerancje i Pasowania";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(453, 212);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(336, 25);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Położenie pól tolerancji otworu";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(13, 213);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(339, 25);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Położenie pola tolerancji wałka";
             // 
             // pictureBoxHole
             // 
@@ -556,6 +581,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(272, 190);
             this.pictureBox4.TabIndex = 16;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox1
             // 
@@ -574,6 +600,15 @@
             this.pictureBox2.Size = new System.Drawing.Size(162, 190);
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.pictureBox7.Location = new System.Drawing.Point(446, 202);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(434, 41);
+            this.pictureBox7.TabIndex = 36;
+            this.pictureBox7.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -624,39 +659,6 @@
             this.oProgramieToolStripMenuItem.Text = "O programie...";
             this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(13, 213);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(339, 25);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "Położenie pola tolerancji wałka";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(453, 212);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(336, 25);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "Położenie pól tolerancji otworu";
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.pictureBox7.Location = new System.Drawing.Point(446, 202);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(434, 41);
-            this.pictureBox7.TabIndex = 36;
-            this.pictureBox7.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -680,9 +682,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

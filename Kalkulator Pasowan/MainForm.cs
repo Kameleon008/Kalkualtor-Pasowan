@@ -15,13 +15,15 @@ namespace Kalkulator_Pasowan
         ToleratedSize rollerToleratedSize = new ToleratedSize();
         ToleratedSize holeToleratedSize = new ToleratedSize();
         TableToleranceReader TableToleranceReader = new TableToleranceReader();
-        Graphics graphics;
+        Graphics graphicsShaft;
+        Graphics graphicsHole;
         TechDrawPainter techDrawPainter = new TechDrawPainter();
 
         public MainForm()
         {
             InitializeComponent();
-            graphics = pictureBoxShaft.CreateGraphics();
+            graphicsShaft = pictureBoxShaft.CreateGraphics();
+            graphicsHole = pictureBoxHole.CreateGraphics();
             textBoxRollDiameter.Text = "0";
             comboBoxRollerClass.Text = "7";
             comboBoxRollerTolerance.Text = "h";
@@ -54,8 +56,10 @@ namespace Kalkulator_Pasowan
                 labelRollerLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
                 labelRollerDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
 
-                techDrawPainter.drawShaft(graphics);
-                techDrawPainter.drawToleranceField(graphics, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawShaft(graphicsShaft);
+                techDrawPainter.drawHole(graphicsHole);
+                techDrawPainter.drawShaftToleranceField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawHoleToleranceField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
             }
             catch
             {
@@ -75,9 +79,10 @@ namespace Kalkulator_Pasowan
                 labelRollerDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
 
 
-                techDrawPainter.drawShaft(graphics);
-                techDrawPainter.drawToleranceField(graphics, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
-
+                techDrawPainter.drawShaft(graphicsShaft);
+                techDrawPainter.drawHole(graphicsHole);
+                techDrawPainter.drawShaftToleranceField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawHoleToleranceField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
             }
             catch
             {
@@ -94,8 +99,10 @@ namespace Kalkulator_Pasowan
                 labelRollerLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
                 labelRollerDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelRollerDimmension.Text, comboBoxRollerClass.SelectedIndex);
 
-                techDrawPainter.drawShaft(graphics);
-                techDrawPainter.drawToleranceField(graphics, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawShaft(graphicsShaft);
+                techDrawPainter.drawHole(graphicsHole);
+                techDrawPainter.drawShaftToleranceField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawHoleToleranceField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
             }
             catch
             {
@@ -173,6 +180,11 @@ namespace Kalkulator_Pasowan
                 labelHoleUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
                 labelHoleLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
                 labelHoleDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+
+                techDrawPainter.drawShaft(graphicsShaft);
+                techDrawPainter.drawHole(graphicsHole);
+                techDrawPainter.drawShaftToleranceField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawHoleToleranceField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
             }
             catch
             {
@@ -203,6 +215,11 @@ namespace Kalkulator_Pasowan
                 labelHoleUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
                 labelHoleLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
                 labelHoleDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+
+                techDrawPainter.drawShaft(graphicsShaft);
+                techDrawPainter.drawHole(graphicsHole);
+                techDrawPainter.drawShaftToleranceField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawHoleToleranceField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
             }
             catch
             {
@@ -224,6 +241,30 @@ namespace Kalkulator_Pasowan
 
         private void pictureBoxShaft_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
+        }
+
+        private void comboBoxHoleClass_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                labelHoleUpperDeviation.Text = TableToleranceReader.readUpperDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+                labelHoleLoverDeviation.Text = TableToleranceReader.readLowerDeviation(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+                labelHoleDimensionTolerace.Text = TableToleranceReader.readRangeOfTolleration(labelHoleDimmension.Text, comboBoxHoleClass.SelectedIndex);
+
+                techDrawPainter.drawShaft(graphicsShaft);
+                techDrawPainter.drawHole(graphicsHole);
+                techDrawPainter.drawShaftToleranceField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
+                techDrawPainter.drawHoleToleranceField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

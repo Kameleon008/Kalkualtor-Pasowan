@@ -60,7 +60,7 @@ namespace Kalkulator_Pasowan
             int shaftDiameterInPixel = 150;
             int shaftLenghtInPixel = (int)(150*1.68-30);
             int offsetShaftPositionX = -50;
-            int offsetShaftPositionY = +50;
+            int offsetShaftPositionY = +20;
             Point beginPoint = new Point((pictureWidth - shaftLenghtInPixel) / 2+ offsetShaftPositionX, (pictureHeight - shaftDiameterInPixel) / 2+ offsetShaftPositionY);
             graphics.DrawLine(shaftPen, beginPoint.X, beginPoint.Y, beginPoint.X + shaftLenghtInPixel, beginPoint.Y);
             graphics.DrawLine(shaftPen, beginPoint.X, beginPoint.Y+shaftDiameterInPixel, beginPoint.X + shaftLenghtInPixel, beginPoint.Y+shaftDiameterInPixel);
@@ -94,14 +94,60 @@ namespace Kalkulator_Pasowan
                 beginPoint.Y + shaftDiameterInPixel / 2);
 
         }
-        
-        public void drawToleranceField(Graphics graphics, double nominalDimmension, double upperDeviation, double lowerDeviation)
+        public void drawHole(Graphics graphics)
         {
-            //graphics.Clear(Color.WhiteSmoke);
+            graphics.Clear(Color.WhiteSmoke);
+
+            //Local Variables
+
+            //Create Pen to drawa Hole
+            Pen holePen = new Pen(Color.Black,2);
+
+            //Create Pen to draw Dashed Line like symetry line
+            Pen dashedPen = new Pen(Color.Black,1);
+            dashedPen.DashCap = DashCap.Round;
+            dashedPen.DashPattern = new float[] { 30, 7, 2, 7 };
+            dashedPen.DashOffset = 10;
+
+            //Create Pen to draw thin lines
+            Pen thinPen = new Pen(Color.Black,1);
+
+            //Draw Hole
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+            int holeDiameterInPixel = 150;
+            int holeLenghtInPixel = (int)(150 * 1.68 - 30);
+            int offsetHolePositionX = -50;
+            int offsetHolePositionY = +20;
+            int borderDistance = 20;
+            Point beginPoint = new Point((pictureWidth - holeLenghtInPixel) / 2 + offsetHolePositionX, (pictureHeight - holeDiameterInPixel) / 2 + offsetHolePositionY);
+            HatchBrush hatchBrush = new HatchBrush(HatchStyle.BackwardDiagonal, Color.Black, Color.Transparent);
+            graphics.DrawLine(holePen, beginPoint.X, beginPoint.Y, beginPoint.X, borderDistance);
+            graphics.DrawLine(holePen, beginPoint.X, beginPoint.Y, beginPoint.X + holeLenghtInPixel, beginPoint.Y);
+            graphics.DrawLine(holePen, beginPoint.X+ holeLenghtInPixel, beginPoint.Y, beginPoint.X+ holeLenghtInPixel, borderDistance);
+            graphics.DrawLine(holePen, beginPoint.X, beginPoint.Y+holeDiameterInPixel, beginPoint.X, pictureHeight- borderDistance);
+            graphics.DrawLine(holePen, beginPoint.X, beginPoint.Y + holeDiameterInPixel, beginPoint.X + holeLenghtInPixel, beginPoint.Y+holeDiameterInPixel);
+            graphics.DrawLine(holePen, beginPoint.X + holeLenghtInPixel, beginPoint.Y + holeDiameterInPixel, beginPoint.X + holeLenghtInPixel, pictureHeight - borderDistance);
+            graphics.FillRectangle(hatchBrush, beginPoint.X, borderDistance, holeLenghtInPixel, beginPoint.Y - borderDistance);
+            graphics.FillRectangle(hatchBrush, beginPoint.X, beginPoint.Y + holeDiameterInPixel, holeLenghtInPixel, pictureHeight - beginPoint.Y - holeDiameterInPixel - borderDistance);
+            graphics.DrawLine(holePen, beginPoint.X, beginPoint.Y, beginPoint.X, beginPoint.Y + holeDiameterInPixel);
+            graphics.DrawLine(holePen, beginPoint.X+holeLenghtInPixel, beginPoint.Y, beginPoint.X+ holeLenghtInPixel, beginPoint.Y + holeDiameterInPixel);
+
+            //Draw line of symetry of shaft
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            int offsetForSymetryLine = 15;
+            graphics.DrawLine(dashedPen,
+                beginPoint.X - offsetForSymetryLine,
+                beginPoint.Y + holeDiameterInPixel / 2,
+                beginPoint.X + offsetForSymetryLine + holeLenghtInPixel,
+                beginPoint.Y + holeDiameterInPixel / 2);
+        }
+        public void drawShaftToleranceField(Graphics graphics, double nominalDimmension, double upperDeviation, double lowerDeviation)
+        {
+            //graphicsShaft.Clear(Color.WhiteSmoke);
             int shaftDiameterInPixel = 150;
             int shaftLenghtInPixel = (int)(150 * 1.68 - 30);
             int offsetShaftPositionX = -50;
-            int offsetShaftPositionY = +50;
+            int offsetShaftPositionY = +20;
             double scaleFactorPosiotion = 0.1;
             double scaleFactorWidth =0.1;
             ;
@@ -112,12 +158,27 @@ namespace Kalkulator_Pasowan
             graphics.DrawRectangle(pen, beginPoint.X , (int)(beginPoint.Y - upperDeviation * scaleFactorPosiotion), shaftLenghtInPixel, (int)((upperDeviation - lowerDeviation) * scaleFactorWidth));
             
         }
+        public void drawHoleToleranceField(Graphics graphics, double nominalDimmension, double upperDeviation, double lowerDeviation)
+        {
+            //graphicsShaft.Clear(Color.WhiteSmoke);
+            int shaftDiameterInPixel = 150;
+            int shaftLenghtInPixel = (int)(150 * 1.68 - 30);
+            int offsetShaftPositionX = -50;
+            int offsetShaftPositionY = +20;
+            double scaleFactorPosiotion = 0.1;
+            double scaleFactorWidth = 0.1;
+            ;
+            Pen pen = new Pen(Color.Red, 1);
+            Point beginPoint = new Point((pictureWidth - shaftLenghtInPixel) / 2 + offsetShaftPositionX, (pictureHeight - shaftDiameterInPixel) / 2 + offsetShaftPositionY);
+            HatchBrush hatchBrush = new HatchBrush(HatchStyle.DiagonalCross, Color.Crimson, Color.Transparent);
+            graphics.FillRectangle(hatchBrush, beginPoint.X, (int)(beginPoint.Y - upperDeviation * scaleFactorPosiotion), shaftLenghtInPixel, (int)((upperDeviation - lowerDeviation) * scaleFactorWidth));
+            graphics.DrawRectangle(pen, beginPoint.X, (int)(beginPoint.Y - upperDeviation * scaleFactorPosiotion), shaftLenghtInPixel, (int)((upperDeviation - lowerDeviation) * scaleFactorWidth));
 
+        }
         public void changeNominalDimension()
         {
 
         }
-
         private void fillTolearanceFieldWithCrossLines()
         {
 
