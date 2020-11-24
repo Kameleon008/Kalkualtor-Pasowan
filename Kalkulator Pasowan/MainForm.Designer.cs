@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.comboBoxRollerTolerance = new System.Windows.Forms.ComboBox();
             this.comboBoxRollerClass = new System.Windows.Forms.ComboBox();
             this.labelRollerTitle = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBoxHole = new System.Windows.Forms.PictureBox();
             this.pictureBoxShaft = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFit = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.labelHoleDimensionTolerace = new System.Windows.Forms.Label();
@@ -70,11 +71,12 @@
             this.motywToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oProgramieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShaft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -348,11 +350,12 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.pictureBoxHole);
             this.tabPage1.Controls.Add(this.pictureBoxShaft);
-            this.tabPage1.Controls.Add(this.pictureBox8);
+            this.tabPage1.Controls.Add(this.pictureBoxFit);
             this.tabPage1.Controls.Add(this.pictureBox6);
             this.tabPage1.Controls.Add(this.pictureBox5);
             this.tabPage1.Controls.Add(this.labelHoleDimensionTolerace);
@@ -438,14 +441,14 @@
             this.pictureBoxShaft.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.pictureBoxShaft_LoadCompleted);
             this.pictureBoxShaft.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxShaft_Paint);
             // 
-            // pictureBox8
+            // pictureBoxFit
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBox8.Location = new System.Drawing.Point(6, 592);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(871, 262);
-            this.pictureBox8.TabIndex = 31;
-            this.pictureBox8.TabStop = false;
+            this.pictureBoxFit.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxFit.Location = new System.Drawing.Point(6, 592);
+            this.pictureBoxFit.Name = "pictureBoxFit";
+            this.pictureBoxFit.Size = new System.Drawing.Size(871, 262);
+            this.pictureBoxFit.TabIndex = 31;
+            this.pictureBoxFit.TabStop = false;
             // 
             // pictureBox6
             // 
@@ -659,6 +662,19 @@
             this.oProgramieToolStripMenuItem.Text = "O programie...";
             this.oProgramieToolStripMenuItem.Click += new System.EventHandler(this.oProgramieToolStripMenuItem_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(11, 553);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 25);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Pasowanie";
+            this.label4.Click += new System.EventHandler(this.label4_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -666,7 +682,10 @@
             this.ClientSize = new System.Drawing.Size(895, 915);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(911, 954);
+            this.MinimumSize = new System.Drawing.Size(911, 954);
             this.Name = "MainForm";
             this.Text = "Kalkulator Pasowań";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -675,7 +694,7 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShaft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -726,7 +745,7 @@
         private System.Windows.Forms.Label labelHoleLoverDeviation;
         private System.Windows.Forms.Label labelHoleDimmension;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBoxFit;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBoxShaft;
@@ -734,6 +753,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label4;
     }
 }
 

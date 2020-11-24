@@ -17,6 +17,7 @@ namespace Kalkulator_Pasowan
         TableToleranceReader TableToleranceReader = new TableToleranceReader();
         Graphics graphicsShaft;
         Graphics graphicsHole;
+        Graphics graphicsFitField;
         TechDrawPainter techDrawPainter = new TechDrawPainter();
 
         public MainForm()
@@ -24,12 +25,14 @@ namespace Kalkulator_Pasowan
             InitializeComponent();
             graphicsShaft = pictureBoxShaft.CreateGraphics();
             graphicsHole = pictureBoxHole.CreateGraphics();
+            graphicsFitField = pictureBoxFit.CreateGraphics();
             textBoxRollDiameter.Text = "0";
             comboBoxRollerClass.Text = "7";
             comboBoxRollerTolerance.Text = "h";
             textBoxHoleDiameter.Text = "10";
             comboBoxHoleClass.Text = "7";
             comboBoxHoleTolerance.Text = "H";
+            techDrawPainter.prepareFitCanvas(pictureBoxFit.Width, pictureBoxFit.Height);
         }
 
         private void labelRollerClass_Click(object sender, EventArgs e)
@@ -83,10 +86,13 @@ namespace Kalkulator_Pasowan
                 techDrawPainter.drawHole(graphicsHole);
                 techDrawPainter.drawRegularTolerationField(graphicsShaft, Convert.ToDouble(labelRollerDimmension.Text), Convert.ToDouble(labelRollerUpperDeviation.Text), Convert.ToDouble(labelRollerLoverDeviation.Text));
                 techDrawPainter.drawRegularTolerationField(graphicsHole, Convert.ToDouble(labelHoleDimmension.Text), Convert.ToDouble(labelHoleUpperDeviation.Text), Convert.ToDouble(labelHoleLoverDeviation.Text));
-            }
-            catch
-            {
 
+                //techDrawPainter.drawRandomLine(graphicsFitField);
+                techDrawPainter.drawFitField(graphicsFitField, rollerToleratedSize, holeToleratedSize);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Exception",ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -143,7 +149,8 @@ namespace Kalkulator_Pasowan
 
         private void oProgramieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ProgramInfo programInfo = new ProgramInfo();
+            programInfo.ShowDialog();
         }
 
         private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -263,6 +270,11 @@ namespace Kalkulator_Pasowan
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
         {
 
         }

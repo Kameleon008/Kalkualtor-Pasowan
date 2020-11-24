@@ -8,23 +8,49 @@ using System.Drawing.Drawing2D;
 
 namespace Kalkulator_Pasowan
 {
+    /// <summary>
+    /// TechDrawPainter - obiiekt umożliwaiające malowanie obiektów graficznych programu
+    /// między inymi rysunków technicznych 
+    /// </summary>
+
     class TechDrawPainter
     {
+        
+        /// <summary>
+        /// Properties 
+        /// </summary>
+        #region
         int pictureWidth = 434;
         int pictureHeight = 290;
+        int fitPictureWidth = 0;
+        int fitPictureHeight = 0;
         Pen pen = new Pen(Color.Red,1);
-        
+        #endregion
+
+        /// <summary>
+        /// Properites Pens and Brusches used to draw graphics
+        /// </summary>
+        #region
+        Pen thinPen = new Pen(Color.Black, 1);
+        Pen thickPen = new Pen(Color.Black, 2);
+        HatchBrush hatchBrushShaft = new HatchBrush(HatchStyle.BackwardDiagonal,Color.Black, Color.Transparent);
+        HatchBrush hatchBrushHole  = new HatchBrush(HatchStyle.ForwardDiagonal, Color.Black, Color.Transparent);
+        HatchBrush hatchBrushShaftFitField = new HatchBrush(HatchStyle.DiagonalCross, Color.Crimson, Color.Transparent);
+        HatchBrush hatchBrushHoleFitField = new HatchBrush(HatchStyle.DiagonalCross, Color.Crimson, Color.Transparent);
+        Pen shaftThinPenFitField = new Pen(Color.Crimson, 1);
+        Pen holeThinPenFitField = new Pen(Color.Crimson, 1);
+        #endregion
+
+
 
         public TechDrawPainter()
         {
            
         }
-
         public TechDrawPainter(int heightOfPuctureBox, int widthOfPictureBox)
         {
 
         }
-
         public void clearDraw(Graphics graphics)
         {
             graphics.Clear(Color.White);
@@ -288,7 +314,7 @@ namespace Kalkulator_Pasowan
             graphicsPath.AddLine(0, 0, 2, -6);  
             thinPen.CustomStartCap = new CustomLineCap(null, graphicsPath);
             thinPen.CustomEndCap = new CustomLineCap(null, graphicsPath);
-            graphics.DrawLine(thinPen, beginPoint.X + shaftLenghtInPixel + 2* offsetBeetwenDimensions, beginPoint.Y + shaftDiameterInPixel, beginPoint.X + shaftLenghtInPixel + 2 * offsetBeetwenDimensions, beginPoint.Y);
+            graphics.DrawLine(thinPen, beginPoint.X + shaftLenghtInPixel + 2 * offsetBeetwenDimensions, beginPoint.Y + shaftDiameterInPixel, beginPoint.X + shaftLenghtInPixel + 2 * offsetBeetwenDimensions, beginPoint.Y);
             graphics.DrawLine(thinPen, beginPoint.X + shaftLenghtInPixel + 3 * offsetBeetwenDimensions, beginPoint.Y + shaftDiameterInPixel, beginPoint.X + shaftLenghtInPixel + 3 * offsetBeetwenDimensions, beginPoint.Y + offsetOfPositionOfToleationField+ tolerationFieldWidth);
             graphics.DrawLine(thinPen, beginPoint.X + shaftLenghtInPixel + 3 * offsetBeetwenDimensions, beginPoint.Y + offsetOfPositionOfToleationField, beginPoint.X + shaftLenghtInPixel + 3 * offsetBeetwenDimensions, beginPoint.Y + offsetOfPositionOfToleationField + tolerationFieldWidth);
             graphics.DrawLine(thinPen, beginPoint.X + shaftLenghtInPixel + 4 * offsetBeetwenDimensions, beginPoint.Y + shaftDiameterInPixel, beginPoint.X + shaftLenghtInPixel + 4 * offsetBeetwenDimensions, beginPoint.Y + offsetOfPositionOfToleationField);
@@ -314,6 +340,86 @@ namespace Kalkulator_Pasowan
             lenth = (int)(150 * 1.68 - 30) - 100;
             offsetX = -50;
             offsetY = +20;
+        }
+        public void prepareFitCanvas(int width, int height)
+        {
+            fitPictureWidth = width;
+            fitPictureHeight = height;
+        }
+        public void drawFitField(Graphics graphics, ToleratedSize shaft,ToleratedSize Hole)
+        {
+            graphics.Clear(Color.WhiteSmoke);
+
+            ///
+            /// Drawing shaft on fit field
+
+            int shaftDiameterInPixel = 100;
+            int shaftLenghtInPixel = (int)(120 * 1.68- 30);
+            int shaftOffsetPositionX = +250;
+            int shaftOffsetPositionY = 0;
+            int beginOfCut = (int)(shaftDiameterInPixel / 1.68);
+            int offsetForCutSymbolLine = +10;
+            int cutSymbolWidth = 20;
+            int cutSymbolHeight = (int)(cutSymbolWidth * 1.68);
+
+
+            graphics.DrawLine(thickPen, shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY, shaftLenghtInPixel+shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY);
+            graphics.DrawLine(thickPen, shaftLenghtInPixel + shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY, shaftLenghtInPixel + shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY + shaftDiameterInPixel);
+            //graphic.DrawRectangle(thinPen, shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY, shaftLenghtInPixel, shaftDiameterInPixel);
+            //graphic.FillRectangle(hatchBrushShaft, shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY, shaftLenghtInPixel, shaftDiameterInPixel);
+
+            Point beginPoint = new Point(shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY);
+           
+
+            //Draw Symbol
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Point[] cutSymbolPoints =
+            {
+                new Point(beginPoint.X,beginPoint.Y-offsetForCutSymbolLine),
+                new Point(beginPoint.X,beginPoint.Y+beginOfCut),
+                new Point(beginPoint.X+cutSymbolWidth/2,beginPoint.Y+beginOfCut+cutSymbolHeight/4),
+                new Point(beginPoint.X-cutSymbolWidth/2,beginPoint.Y+beginOfCut+cutSymbolHeight/4+cutSymbolHeight/2),
+                new Point(beginPoint.X,beginPoint.Y+beginOfCut+cutSymbolHeight/4+cutSymbolHeight/2+cutSymbolHeight/4),
+                new Point(beginPoint.X,beginPoint.Y+offsetForCutSymbolLine+shaftDiameterInPixel),
+            };
+            graphics.DrawLines(thinPen, cutSymbolPoints);
+
+            ///
+            /// Drawing Hole on fit field
+
+            int holeDiameterInPixel = 100;
+            int holeLenghtInPixel = (int)(120 * 1.68 - 30);
+            int holeOffsetPositionX = +450;
+            int holeOffsetPositionY = 0;
+            int holeBorderOffset = 20;
+
+            graphics.DrawLine(thickPen, holeOffsetPositionX, fitPictureHeight / 2 + holeOffsetPositionY, holeOffsetPositionX, holeBorderOffset);
+            graphics.DrawLine(thickPen, holeOffsetPositionX, fitPictureHeight / 2 + holeOffsetPositionY, holeOffsetPositionX + holeLenghtInPixel, fitPictureHeight / 2 + holeOffsetPositionY);
+            graphics.DrawLine(thickPen, holeOffsetPositionX+holeLenghtInPixel, fitPictureHeight / 2 + holeOffsetPositionY, holeOffsetPositionX + holeLenghtInPixel, holeBorderOffset);
+            if(holeOffsetPositionX>=shaftOffsetPositionX+shaftLenghtInPixel)
+                graphics.DrawLine(thickPen, holeOffsetPositionX, fitPictureHeight / 2 + holeOffsetPositionY, holeOffsetPositionX, fitPictureHeight - holeBorderOffset);
+            if (holeOffsetPositionX+holeLenghtInPixel>= shaftOffsetPositionX + shaftLenghtInPixel)
+                graphics.DrawLine(thickPen, holeOffsetPositionX+ holeLenghtInPixel, fitPictureHeight / 2 + holeOffsetPositionY, holeOffsetPositionX+ holeLenghtInPixel, fitPictureHeight - holeBorderOffset);
+            graphics.FillRectangle(hatchBrushHole, holeOffsetPositionX, holeBorderOffset, holeLenghtInPixel, fitPictureHeight / 2-holeBorderOffset);
+
+
+            ///
+            /// Drawing tolerationField for shaft
+
+            int temporaryOffset = 20;
+            double temporaryScale = .3;
+            graphics.DrawRectangle(shaftThinPenFitField, shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY - temporaryOffset, shaftLenghtInPixel, (int)(shaftDiameterInPixel *temporaryScale));
+            graphics.FillRectangle(hatchBrushShaftFitField, shaftOffsetPositionX, fitPictureHeight / 2 + shaftOffsetPositionY - temporaryOffset, shaftLenghtInPixel, (int)(shaftDiameterInPixel*temporaryScale));
+
+            ///
+            /// Drawing tolerationField for hole
+
+            int temporaryOffset2 = 0;
+            double temporaryScale2 = .45;
+            graphics.DrawRectangle(holeThinPenFitField, holeOffsetPositionX, fitPictureHeight / 2 + holeOffsetPositionY - temporaryOffset2, holeLenghtInPixel, (int)(holeDiameterInPixel * temporaryScale2));
+            graphics.FillRectangle(hatchBrushHoleFitField, holeOffsetPositionX, fitPictureHeight / 2 + holeOffsetPositionY - temporaryOffset2, holeLenghtInPixel, (int)(holeDiameterInPixel * temporaryScale2));
+
+
         }
     }
 

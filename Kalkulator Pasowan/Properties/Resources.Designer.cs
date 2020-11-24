@@ -79,5 +79,26 @@ namespace Kalkulator_Pasowan.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hopstarter_Soft {
+            get {
+                object obj = ResourceManager.GetObject("Hopstarter-Soft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_mechanical_engineering_t_shirt_computer_engineerin_gear_png_download_image_peoplepng_com_peoplepng_5b89db1622d5d2_0456914115357611741427 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-mechanical-engineering-t-shirt-computer-engineerin-gear-png-download-imag" +
+                        "e-peoplepng-com-peoplepng-5b89db1622d5d2.0456914115357611741427", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
